@@ -33,8 +33,8 @@ CREATE TABLE `songtransaction` (
   UNIQUE KEY `songtransactionID_UNIQUE` (`songtransactionID`),
   KEY `UserID_idx` (`UserID`),
   KEY `SongID_idx` (`SongID`),
-  CONSTRAINT `SongID` FOREIGN KEY (`SongID`) REFERENCES `ourmusicdb`.`song` (`songID`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `UserID` FOREIGN KEY (`UserID`) REFERENCES `ourmusicdb`.`userdata` (`UserID`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `SongID` FOREIGN KEY (`SongID`) REFERENCES `song` (`songID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `UserID` FOREIGN KEY (`UserID`) REFERENCES `userdata` (`UserID`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -56,4 +56,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-11-01 20:27:35
+-- Dump completed on 2019-11-01 20:58:08
