@@ -25,7 +25,6 @@ DROP TABLE IF EXISTS `artist`;
 CREATE TABLE `artist` (
   `ArtistID` int(11) NOT NULL AUTO_INCREMENT,
   `Name` varchar(255) NOT NULL,
-  `Description` longtext NOT NULL,
   PRIMARY KEY (`ArtistID`),
   UNIQUE KEY `ArtistID_UNIQUE` (`ArtistID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -49,4 +48,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-11-01 20:58:08
+-- Dump completed on 2019-11-02  3:37:33

@@ -24,7 +24,7 @@ DROP TABLE IF EXISTS `songtransaction`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `songtransaction` (
   `songtransactionID` int(11) NOT NULL AUTO_INCREMENT,
-  `DateOfPurchased` date NOT NULL,
+  `Date_Of_Purchased` date NOT NULL,
   `SongID` int(11) NOT NULL,
   `UserID` int(11) NOT NULL,
   `Song_Title` varchar(255) NOT NULL,
@@ -33,6 +33,8 @@ CREATE TABLE `songtransaction` (
   UNIQUE KEY `songtransactionID_UNIQUE` (`songtransactionID`),
   KEY `UserID_idx` (`UserID`),
   KEY `SongID_idx` (`SongID`),
+  KEY `Price2_idx` (`Price`) /*!80000 INVISIBLE */,
+  CONSTRAINT `Price2` FOREIGN KEY (`Price`) REFERENCES `song` (`Price`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `SongID` FOREIGN KEY (`SongID`) REFERENCES `song` (`songID`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `UserID` FOREIGN KEY (`UserID`) REFERENCES `userdata` (`UserID`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -56,4 +58,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-11-01 20:58:08
+-- Dump completed on 2019-11-02  3:37:33

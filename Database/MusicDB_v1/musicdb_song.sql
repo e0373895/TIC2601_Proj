@@ -30,9 +30,11 @@ CREATE TABLE `song` (
   `Price` decimal(10,0) NOT NULL,
   `AlbumID` int(11) DEFAULT NULL,
   `Album_Title` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`songID`),
+  `Date` date DEFAULT NULL,
+  PRIMARY KEY (`songID`,`Price`),
   UNIQUE KEY `songID_UNIQUE` (`songID`),
-  UNIQUE KEY `File_Location_UNIQUE` (`File_Location`)
+  UNIQUE KEY `File_Location_UNIQUE` (`File_Location`),
+  KEY `Price` (`Price`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -54,4 +56,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-11-01 20:58:08
+-- Dump completed on 2019-11-02  3:37:33

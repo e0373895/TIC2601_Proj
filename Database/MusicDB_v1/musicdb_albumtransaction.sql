@@ -24,15 +24,18 @@ DROP TABLE IF EXISTS `albumtransaction`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `albumtransaction` (
   `albumtransactionID` int(11) NOT NULL AUTO_INCREMENT,
-  `DateOfPurchased` datetime NOT NULL,
+  `Date_Of_Purchased` datetime NOT NULL,
   `AlbumID` int(11) NOT NULL,
   `UserID` int(11) NOT NULL,
   `Album_Title` varchar(255) NOT NULL,
+  `Price` decimal(10,0) NOT NULL,
   PRIMARY KEY (`albumtransactionID`),
   UNIQUE KEY `albumtransactionID_UNIQUE` (`albumtransactionID`),
   KEY `AlbumID_idx` (`AlbumID`),
   KEY `UserID_idx` (`UserID`),
+  KEY `Price_idx` (`Price`),
   CONSTRAINT `AlbumID` FOREIGN KEY (`AlbumID`) REFERENCES `album` (`AlbumID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `Price` FOREIGN KEY (`Price`) REFERENCES `album` (`Price`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `UserID2` FOREIGN KEY (`UserID`) REFERENCES `userdata` (`UserID`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -55,4 +58,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-11-01 20:58:08
+-- Dump completed on 2019-11-02  3:37:33
