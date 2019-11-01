@@ -16,39 +16,35 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `song`
+-- Table structure for table `songtransaction`
 --
 
-DROP TABLE IF EXISTS `song`;
+DROP TABLE IF EXISTS `songtransaction`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `song` (
-  `SongID` int(11) NOT NULL AUTO_INCREMENT,
-  `Song_Title` varchar(255) DEFAULT NULL,
-  `Play_Time` double NOT NULL,
-  `File_Location` varchar(255) NOT NULL,
-  `Song_Artwork` varchar(255) DEFAULT NULL,
-  `Description` longtext,
+CREATE TABLE `songtransaction` (
+  `songtransactionID` int(11) NOT NULL AUTO_INCREMENT,
+  `DateOfPurchased` date NOT NULL,
+  `SongID` int(11) NOT NULL,
+  `UserID` int(11) NOT NULL,
+  `Song_Title` varchar(255) NOT NULL,
   `Price` decimal(10,0) NOT NULL,
-  `AlbumID` int(11) NOT NULL,
-  `Album_Title` varchar(255) NOT NULL,
-  PRIMARY KEY (`SongID`),
-  UNIQUE KEY `SongID_UNIQUE` (`SongID`),
-  UNIQUE KEY `File_Location_UNIQUE` (`File_Location`),
-  UNIQUE KEY `AlbumID_UNIQUE` (`AlbumID`),
-  UNIQUE KEY `Album_Title_UNIQUE` (`Album_Title`),
-  KEY `AlbumID_idx` (`AlbumID`,`Album_Title`),
-  CONSTRAINT `AlbumID` FOREIGN KEY (`AlbumID`, `Album_Title`) REFERENCES `album` (`AlbumID`, `Album_Title`) ON DELETE CASCADE ON UPDATE CASCADE
+  PRIMARY KEY (`songtransactionID`),
+  UNIQUE KEY `songtransactionID_UNIQUE` (`songtransactionID`),
+  KEY `UserID_idx` (`UserID`),
+  KEY `SongID_idx` (`SongID`),
+  CONSTRAINT `SongID` FOREIGN KEY (`SongID`) REFERENCES `ourmusicdb`.`song` (`songID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `UserID` FOREIGN KEY (`UserID`) REFERENCES `ourmusicdb`.`userdata` (`UserID`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `song`
+-- Dumping data for table `songtransaction`
 --
 
-LOCK TABLES `song` WRITE;
-/*!40000 ALTER TABLE `song` DISABLE KEYS */;
-/*!40000 ALTER TABLE `song` ENABLE KEYS */;
+LOCK TABLES `songtransaction` WRITE;
+/*!40000 ALTER TABLE `songtransaction` DISABLE KEYS */;
+/*!40000 ALTER TABLE `songtransaction` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -60,4 +56,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-10-31  0:20:43
+-- Dump completed on 2019-11-01 20:27:35
