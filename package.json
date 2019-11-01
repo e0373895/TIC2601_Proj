@@ -6,7 +6,8 @@
     "bootstrap": "^4.3.1",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
-    "react-scripts": "3.2.0"
+    "react-scripts": "3.2.0",
+    "react-tilt": "^0.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -28,5 +29,12 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+<<<<<<< HEAD
+  },
+  "devDependencies": {
+    "babel-plugin-transform-es2015-modules-amd": "^6.24.1",
+    "tachyons": "^4.11.1"
+=======
+>>>>>>> ee4601c5e1f79f77962d018bc35f79841f91c1db
   }
 }
