@@ -23,22 +23,16 @@ DROP TABLE IF EXISTS `song`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `song` (
-  `SongID` int(11) NOT NULL AUTO_INCREMENT,
-  `Song_Title` varchar(255) DEFAULT NULL,
-  `Play_Time` double NOT NULL,
+  `songID` int(11) NOT NULL AUTO_INCREMENT,
+  `Song_Title` varchar(255) NOT NULL,
   `File_Location` varchar(255) NOT NULL,
-  `Song_Artwork` varchar(255) DEFAULT NULL,
-  `Description` longtext,
+  `Song_Artwork` varchar(45) DEFAULT NULL,
   `Price` decimal(10,0) NOT NULL,
-  `AlbumID` int(11) NOT NULL,
-  `Album_Title` varchar(255) NOT NULL,
-  PRIMARY KEY (`SongID`),
-  UNIQUE KEY `SongID_UNIQUE` (`SongID`),
-  UNIQUE KEY `File_Location_UNIQUE` (`File_Location`),
-  UNIQUE KEY `AlbumID_UNIQUE` (`AlbumID`),
-  UNIQUE KEY `Album_Title_UNIQUE` (`Album_Title`),
-  KEY `AlbumID_idx` (`AlbumID`,`Album_Title`),
-  CONSTRAINT `AlbumID` FOREIGN KEY (`AlbumID`, `Album_Title`) REFERENCES `album` (`AlbumID`, `Album_Title`) ON DELETE CASCADE ON UPDATE CASCADE
+  `AlbumID` int(11) DEFAULT NULL,
+  `Album_Title` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`songID`),
+  UNIQUE KEY `songID_UNIQUE` (`songID`),
+  UNIQUE KEY `File_Location_UNIQUE` (`File_Location`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -60,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-10-31  0:20:43
+-- Dump completed on 2019-11-01 20:27:35

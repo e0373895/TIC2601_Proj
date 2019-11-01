@@ -16,30 +16,34 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `login`
+-- Table structure for table `albumtransaction`
 --
 
-DROP TABLE IF EXISTS `login`;
+DROP TABLE IF EXISTS `albumtransaction`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `login` (
-  `LoginID` int(11) NOT NULL AUTO_INCREMENT,
-  `Username` varchar(255) NOT NULL,
-  `Password` varchar(255) NOT NULL,
-  UNIQUE KEY `LoginID_UNIQUE` (`LoginID`),
-  UNIQUE KEY `username_UNIQUE` (`Username`),
-  UNIQUE KEY `Password_UNIQUE` (`Password`),
-  CONSTRAINT `UserID` FOREIGN KEY (`LoginID`) REFERENCES `userdata` (`UserID`) ON DELETE CASCADE ON UPDATE CASCADE
+CREATE TABLE `albumtransaction` (
+  `albumtransactionID` int(11) NOT NULL AUTO_INCREMENT,
+  `DateOfPurchased` datetime NOT NULL,
+  `AlbumID` int(11) NOT NULL,
+  `UserID` int(11) NOT NULL,
+  `Album_Title` varchar(255) NOT NULL,
+  PRIMARY KEY (`albumtransactionID`),
+  UNIQUE KEY `albumtransactionID_UNIQUE` (`albumtransactionID`),
+  KEY `AlbumID_idx` (`AlbumID`),
+  KEY `UserID_idx` (`UserID`),
+  CONSTRAINT `AlbumID` FOREIGN KEY (`AlbumID`) REFERENCES `ourmusicdb`.`album` (`AlbumID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `UserID2` FOREIGN KEY (`UserID`) REFERENCES `ourmusicdb`.`userdata` (`UserID`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `login`
+-- Dumping data for table `albumtransaction`
 --
 
-LOCK TABLES `login` WRITE;
-/*!40000 ALTER TABLE `login` DISABLE KEYS */;
-/*!40000 ALTER TABLE `login` ENABLE KEYS */;
+LOCK TABLES `albumtransaction` WRITE;
+/*!40000 ALTER TABLE `albumtransaction` DISABLE KEYS */;
+/*!40000 ALTER TABLE `albumtransaction` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -51,4 +55,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-10-31  0:20:43
+-- Dump completed on 2019-11-01 20:27:35
