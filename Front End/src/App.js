@@ -16,7 +16,6 @@ class App extends Component {
         id: "",
         name: "",
         email: "",
-        entries: 0,
         joined: ""
       }
     };

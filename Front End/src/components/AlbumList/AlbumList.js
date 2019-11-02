@@ -34,7 +34,7 @@ const AlbumList = ({ Als }) => {
         {Albums.map((Album, i) => {
           return (
             <AlbumCard
-              key={i}
+              key={Albums[i].id}
               title={Albums[i].title}
               artist={Albums[i].artist}
               imglink={Albums[i].imglink}
