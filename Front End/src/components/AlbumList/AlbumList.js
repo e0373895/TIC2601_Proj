@@ -1,11 +1,11 @@
 import React from "react";
-import Logo from "../logo/logo";
 import Search from "./search.png";
 import AlbumCard from "../albumcard/albumCard";
-const AlbumList = ({ onRouteChange, isSignedIn, searchChange }) => {
+import { Albums } from "../../Albums";
+
+const AlbumList = ({ Als }) => {
   return (
     <div>
-      //Albumlist text and search
       <div className="flex dt pa3 pa4-ns" style={{ textAlign: "left" }}>
         <h2 className="f3 fw4 mv0" style={{ width: "100px" }}>
           Albums
@@ -17,7 +17,7 @@ const AlbumList = ({ onRouteChange, isSignedIn, searchChange }) => {
           placeholder="Search Albums"
           aria-describedby="name-desc"
           style={{ float: "right" }}
-          onChange={searchChange}
+          //   onChange={searchChange}
         />
         <img
           href="#"
@@ -31,7 +31,16 @@ const AlbumList = ({ onRouteChange, isSignedIn, searchChange }) => {
         />
       </div>
       <article style={{ display: "inline" }}>
-        <AlbumCard />
+        {Albums.map((Album, i) => {
+          return (
+            <AlbumCard
+              key={i}
+              title={Albums[i].title}
+              artist={Albums[i].artist}
+              imglink={Albums[i].imglink}
+            />
+          );
+        })}
       </article>
     </div>
   );

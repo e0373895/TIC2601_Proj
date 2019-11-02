@@ -1,24 +1,20 @@
 import React from "react";
 
-const AlbumCard = ({ onRouteChange, isSignedIn }) => {
+const AlbumCard = ({ title, artist, imglink }) => {
   return (
-    <div style={{ float: "left" }}>
-      <a
-        class="db center mw5 black link dim"
-        title="Frank Ocean's Blonde on Apple Music"
-        href="https://geo.itunes.apple.com/us/album/blonde/id1146195596?at=1l3vqFJ&mt=1&app=music"
-      >
+    <div ClassName="grow" style={{ float: "left" }}>
+      <a className="db center mw5 black link dim" href="#">
         <img
-          class="db ba b--black-10"
+          className="db ba b--black-10"
           alt="Frank Ocean Blonde Album Cover"
-          src="https://s3-us-west-1.amazonaws.com/tachyonsio/img/Blonde-Frank_Ocean.jpeg"
+          src={imglink}
         />
 
-        <dl class="mt2 f6 lh-copy">
-          <dt class="clip">Title</dt>
-          <dd class="ml0 fw9">Blonde</dd>
-          <dt class="clip">Artist</dt>
-          <dd class="ml0 gray">Frank Ocean</dd>
+        <dl className="mt2 f6 lh-copy">
+          <dt className="clip">Title</dt>
+          <dd className="ml0 fw9">{title}</dd>
+          <dt className="clip">Artist</dt>
+          <dd className="ml0 gray">{artist}</dd>
         </dl>
       </a>
     </div>

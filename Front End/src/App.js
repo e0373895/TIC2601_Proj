@@ -4,6 +4,7 @@ import "./App.css";
 import Signin from "./components/Signin/Signin";
 import Register from "./components/Register/Register";
 import AlbumList from "./components/AlbumList/AlbumList";
+import { Albums } from "./Albums";
 
 class App extends Component {
   constructor() {
@@ -64,7 +65,7 @@ class App extends Component {
       // </div>
       <div className="App">
         <Navigation />
-        <AlbumList />
+        <AlbumList Albums={Albums} />
       </div>
     );
   }
