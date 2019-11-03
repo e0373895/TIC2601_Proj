@@ -6,7 +6,8 @@ class Register extends React.Component {
     this.state = {
       email: "",
       password: "",
-      name: ""
+      name: "",
+      username: ""
     };
   }
 
@@ -22,6 +23,10 @@ class Register extends React.Component {
     this.setState({ password: event.target.value });
   };
 
+  onUsernameChange = event => {
+    this.setState({ username: event.target.value });
+  };
+
   onSubmitSignIn = () => {
     fetch("http://localhost:3000/register", {
       method: "post",
@@ -29,7 +34,8 @@ class Register extends React.Component {
       body: JSON.stringify({
         email: this.state.email,
         password: this.state.password,
-        name: this.state.name
+        name: this.state.name,
+        username: this.state.username
       })
     })
       .then(response => response.json())
@@ -70,6 +76,18 @@ class Register extends React.Component {
                   name="email-address"
                   id="email-address"
                   onChange={this.onEmailChange}
+                />
+              </div>
+              <div className="mv3">
+                <label className="db fw6 lh-copy f6" htmlFor="username">
+                  Username
+                </label>
+                <input
+                  className="b pa2 input-reset ba bg-transparent hover-bg-black  w-100"
+                  type="text"
+                  name="username"
+                  id="username"
+                  onChange={this.onUsernameChange}
                 />
               </div>
               <div className="mv3">

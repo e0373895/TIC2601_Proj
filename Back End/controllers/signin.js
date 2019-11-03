@@ -9,7 +9,7 @@ const handleSignin = db => (req, res) => {
     function(error, results, fields) {
       if (error) throw error;
       // const isValid = bcrypt.compareSync(password, results[0].Password);
-      console.log(results);
+      // console.log(results);
       if (!results) {
         res.status(400).json("User does not exist");
       } else {
