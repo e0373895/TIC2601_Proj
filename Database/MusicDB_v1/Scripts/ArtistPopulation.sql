@@ -1,5 +1,7 @@
 
 TRUNCATE musicdb.artist;
+
+#For Album Illenium-ASCEND-2019 & Ashes 2016
 INSERT INTO musicdb.artist (name) VALUES('Illenium');
 INSERT INTO musicdb.artist (name)VALUES('Georgia Ku');
 INSERT INTO musicdb.artist (name)VALUES('Jon Bellion');
@@ -16,6 +18,15 @@ INSERT INTO musicdb.artist (name)VALUES('Blanke');
 INSERT INTO musicdb.artist (name)VALUES('Chandler Leighton');
 INSERT INTO musicdb.artist (name)VALUES('Said The Sky');
 
+
+#For Album Pink Essentials
+INSERT INTO musicdb.artist (name) VALUES('Pink');
+INSERT INTO musicdb.artist (name) VALUES('Nate Ruess');
+
+#For Album Black Stone Cherry - Black To Blues, Vol. 2 (2019)
+INSERT INTO musicdb.artist (name) VALUES('Black Stone Cherry');
+
+#
 commit;
 #CREATE TRIGGER MyTrigger BEFORE INSERT ON musicdb.artist
 #FOR EACH ROW BEGIN
