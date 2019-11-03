@@ -1,4 +1,4 @@
-const handlRegister = db => (req, res) => {
+const handleRegister = db => (req, res) => {
   const { username, password, email, name } = req.body;
   db.connect();
   db.query(
@@ -21,5 +21,5 @@ const handlRegister = db => (req, res) => {
 };
 
 module.exports = {
-  handlRegister: handlRegister
+  handleRegister: handleRegister
 };

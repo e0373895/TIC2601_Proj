@@ -4,11 +4,7 @@ const AlbumCard = ({ title, artist, imglink }) => {
   return (
     <div ClassName="grow" style={{ float: "left" }}>
       <a className="db center mw5 black link dim" href="#">
-        <img
-          className="db ba b--black-10"
-          alt="Frank Ocean Blonde Album Cover"
-          src={imglink}
-        />
+        <img className="db ba b--black-10" alt="Album Artwork" src={imglink} />
 
         <dl className="mt2 f6 lh-copy">
           <dt className="clip">Title</dt>
@@ -17,6 +13,7 @@ const AlbumCard = ({ title, artist, imglink }) => {
           <dd className="ml0 gray">{artist}</dd>
         </dl>
       </a>
+      <p className="f6 blue">Download</p>
     </div>
   );
 };

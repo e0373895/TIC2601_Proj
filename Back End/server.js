@@ -6,6 +6,7 @@ const bodyParser = require("body-parser");
 
 const register = require("./controllers/register");
 const signin = require("./controllers/signin");
+const albumlist = require("./controllers/albumlist");
 // const profile = require('./controllers/profile');
 
 const db = mysql.createConnection({
@@ -29,12 +30,13 @@ app.get("/", (req, res) => {
 
 app.post("/signin", signin.handleSignin(db));
 
-app.post("/register", register.handlRegister(db));
+app.post("/register", register.handleRegister(db));
+
+app.post("/searchalb", albumlist.handleSearch(db));
 
 app.listen(3000, () => {
   console.log("Application listening on port 3000!");
 });
-
 /*
     --> / res = this is working
     --> /signin --> POST = successful / fail
