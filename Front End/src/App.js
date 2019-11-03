@@ -5,7 +5,6 @@ import Signin from "./components/Signin/Signin";
 import Register from "./components/Register/Register";
 import AlbumList from "./components/AlbumList/AlbumList";
 import { Albums } from "./Albums";
-
 class App extends Component {
   constructor() {
     super();
@@ -16,8 +15,7 @@ class App extends Component {
         id: "",
         name: "",
         email: ""
-      },
-      AlbumList: []
+      }
     };
   }
 

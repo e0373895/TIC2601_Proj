@@ -16,11 +16,14 @@ const db = mysql.createConnection({
   database: "musicdb"
 });
 
+db.connect();
+
 const app = express();
 
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static("public"));
 
 //Figure out what is db.useres in this contex
 app.get("/", (req, res) => {

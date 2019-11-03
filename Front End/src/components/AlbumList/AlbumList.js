@@ -3,12 +3,12 @@ import Search from "./search.png";
 import AlbumCard from "../albumcard/albumCard";
 import { Albums } from "../../Albums";
 
-const AlList = [];
 class AlbumList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      keyword: ""
+      keyword: "",
+      AlList: []
     };
   }
 
@@ -16,7 +16,8 @@ class AlbumList extends React.Component {
     this.setState({ keyword: event.target.value });
   };
 
-  onSubmitSearch = () => {
+  onSubmitSearch = event => {
+    // alert("clicked");
     fetch("http://localhost:3000/searchalb", {
       method: "post",
       headers: { "Content-Type": "application/json" },
@@ -27,8 +28,10 @@ class AlbumList extends React.Component {
       .then(response => response.json())
       .then(output => {
         if (output) {
-          alert(output);
-          this.AlList = output;
+          this.setState({
+            AlList: output
+          });
+          console.log(this.state.AlList);
         }
       });
   };
@@ -37,21 +40,20 @@ class AlbumList extends React.Component {
     return (
       <div>
         <div className="flex dt pa3 pa4-ns" style={{ textAlign: "left" }}>
-          <h2 className="f3 fw4 mv0" style={{ width: "100px" }}>
+          <h2 className="f3 fw4 mv0" style={{ widtYh: "100px" }}>
             Albums
           </h2>
           <input
             id="name"
-            class="w-20 pd5"
+            className="w-20 pd5"
             type="search"
             placeholder="Search Albums"
             aria-describedby="name-desc"
             style={{ float: "right" }}
             onChange={this.onKeywordChange}
-            //   onChange={searchChange}
           />
           <img
-            href="#"
+            className="b"
             src={Search}
             alt="Search"
             onClick={this.onSubmitSearch}
@@ -63,13 +65,14 @@ class AlbumList extends React.Component {
           />
         </div>
         <article style={{ display: "inline" }}>
-          {AlList.map((Album, i) => {
+          {this.state.AlList.map((Album, i) => {
             return (
               <AlbumCard
-                key={Albums[i].AlbumID}
-                title={Albums[i].Album_Title}
-                artist="HELLO" //{Albums[i].artist}
-                imglink="image" //{Albums[i].imglink}
+                key={Album.AlbumID}
+                title={Album.Album_Title}
+                songtitle={Album.Song_Title}
+                artist={Album.artist}
+                imglink={Album.Album_Artwork}
                 downloadlink="Download" //{Albums[i].downloadlink}
               />
             );

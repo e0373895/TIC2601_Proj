@@ -1,6 +1,5 @@
 const handleRegister = db => (req, res) => {
   const { username, password, email, name } = req.body;
-  db.connect();
   db.query(
     {
       sql:
@@ -16,8 +15,6 @@ const handleRegister = db => (req, res) => {
       res.send("Registered Successfully");
     }
   );
-
-  db.end();
 };
 
 module.exports = {

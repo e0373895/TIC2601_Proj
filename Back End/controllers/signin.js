@@ -1,13 +1,15 @@
 const handleSignin = db => (req, res) => {
   const { username, password } = req.body;
-  db.connect();
   db.query(
     {
       sql: "SELECT Username,Password FROM userdata WHERE Username = ?",
       values: [username]
     },
     function(error, results, fields) {
-      if (error) throw error;
+      if (error) {
+        console.log("SQL Sign in not working");
+        throw error;
+      }
       // const isValid = bcrypt.compareSync(password, results[0].Password);
       // console.log(results);
       if (!results) {
@@ -22,8 +24,6 @@ const handleSignin = db => (req, res) => {
       }
     }
   );
-
-  db.end();
 };
 
 module.exports = {

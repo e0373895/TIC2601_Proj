@@ -11,7 +11,9 @@
     "mysql": "^2.17.1",
     "nodemon": "^1.19.4"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "ws": "3.3.2"
+  },
   "scripts": {
     "start": "nodemon server.js"
   },
