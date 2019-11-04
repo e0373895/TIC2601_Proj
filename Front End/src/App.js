@@ -4,7 +4,8 @@ import "./App.css";
 import Signin from "./components/Signin/Signin";
 import Register from "./components/Register/Register";
 import AlbumList from "./components/AlbumList/AlbumList";
-import { Albums } from "./Albums";
+import Fileupload from "./components/fileupload/fileupload";
+
 class App extends Component {
   constructor() {
     super();
@@ -34,6 +35,8 @@ class App extends Component {
       this.setState({ isSignedIn: false });
     } else if (route === "home") {
       this.setState({ isSignedIn: true });
+    } else if (route === "fileupload") {
+      this.setState({ isSignedIn: true });
     }
     this.setState({ route: route });
   };
@@ -46,10 +49,13 @@ class App extends Component {
           isSignedIn={isSignedIn}
           onRouteChange={this.onRouteChange}
         />
+
         {route === "home" ? (
           <AlbumList />
         ) : route === "signin" ? (
           <Signin loadUser={this.loadUser} onRouteChange={this.onRouteChange} />
+        ) : route === "fileupload" ? (
+          <Fileupload onRouteChange={this.onRouteChange} />
         ) : (
           <Register
             loadUser={this.loadUser}

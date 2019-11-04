@@ -36,6 +36,25 @@ class AlbumList extends React.Component {
       });
   };
 
+  componentDidMount() {
+    fetch("http://localhost:3000/searchalb", {
+      method: "post",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        keyword: ""
+      })
+    })
+      .then(response => response.json())
+      .then(output => {
+        if (output) {
+          this.setState({
+            AlList: output
+          });
+          console.log(this.state.AlList);
+        }
+      });
+  }
+
   render() {
     return (
       <div>

@@ -7,6 +7,18 @@ const Navigation = ({ onRouteChange, isSignedIn }) => {
         <Logo />
         <div className="" display="inline-block">
           <a
+            onClick={() => onRouteChange("home")}
+            className="f3 link dim black underline pa3 pointer"
+          >
+            Home
+          </a>
+          <a
+            onClick={() => onRouteChange("fileupload")}
+            className="f3 link dim black underline pa3 pointer"
+          >
+            Upload
+          </a>
+          <a
             onClick={() => onRouteChange("signout")}
             className="f3 link dim black underline pa3 pointer"
           >
