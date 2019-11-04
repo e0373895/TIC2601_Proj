@@ -8,7 +8,9 @@ class fileupload extends React.Component {
       Success: "",
       AlbumName: "Unknown",
       ArtistName: "Unknown",
-      SongName: "Unknown"
+      SongName: "Unknown",
+      SongPrice: "0",
+      AlbumPrice: "19.99"
     };
     this.onSubmitUpload = this.onSubmitUpload.bind(this);
   }
@@ -25,6 +27,10 @@ class fileupload extends React.Component {
     this.setState({ SongName: event.target.value });
   };
 
+  onSongPriceChange = event => {
+    this.setState({ SongPrice: event.target.value });
+  };
+
   onSubmitUpload(ev) {
     ev.preventDefault();
 
@@ -33,6 +39,8 @@ class fileupload extends React.Component {
     fromData.append("AlbumName", this.state.AlbumName);
     fromData.append("ArtistName", this.state.ArtistName);
     fromData.append("SongName", this.state.SongName);
+    fromData.append("SongPrice", this.state.SongPrice);
+    fromData.append("AlbumPrice", this.state.SongPrice);
 
     fetch("http://localhost:3000/upload", {
       method: "POST",
@@ -53,7 +61,7 @@ class fileupload extends React.Component {
         <main className="pa4 black-80">
           <div className="measure">
             <fieldset id="Upload" className="ba b--transparent ph0 mh0">
-              <legend className="f1 fw6 ph0 mh0">Upload</legend>
+              <legend className="f1 fw6 ph0 mh0">Upload Song</legend>
               <div className="mt3">
                 <label className="db fw6 lh-copy f6">Album Name :</label>
                 <input
@@ -69,7 +77,7 @@ class fileupload extends React.Component {
                   Artist Name :
                 </label>
                 <input
-                  className="b pa2 input-reset ba bg-transparent hover-bg-black w-100"
+                  className=" pa2 input-reset ba bg-transparent hover-bg-black w-100"
                   type="text"
                   name="Artist"
                   id="Artist"
@@ -81,16 +89,31 @@ class fileupload extends React.Component {
                   Song Name :
                 </label>
                 <input
-                  className="b pa2 input-reset ba bg-transparent hover-bg-black w-100"
+                  className=" pa2 input-reset ba bg-transparent hover-bg-black w-100"
                   type="text"
                   name="Song"
                   id="Song"
                   onChange={this.onSongChange}
                 />
               </div>
-
-              <div className="mv3">
+              <div className="mv3" display="inline-block">
                 <label className="db fw6 lh-copy f6" htmlFor="Artist">
+                  Song Price :
+                </label>
+                <input
+                  className=" pa2 input-reset ba bg-transparent hover-bg-black w-20"
+                  type="text"
+                  name="Song"
+                  id="Song"
+                  onChange={this.onSongPriceChange}
+                />
+              </div>
+              <div className="mv3">
+                <label
+                  className="db fw6 lh-copy f4"
+                  htmlFor="Artist"
+                  display="text-align:left"
+                >
                   Browse
                 </label>
               </div>
