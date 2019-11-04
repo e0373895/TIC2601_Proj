@@ -1,7 +1,7 @@
 TRUNCATE musicdb.album;
 
 INSERT INTO musicdb.album (ArtistID,Album_Title,Album_Artwork,Date,Price)
-VALUES (1,'Illenium-ASCEND-2019','D:\NUS_STUFF\TIC2601\Songs\Illenium-ASCEND-2019\cover.jpg','20190816','4.48');
+VALUES (1,'Illenium-ASCEND-2019','D:/NUS_STUFF/TIC2601/Songs/Illenium-ASCEND-2019/Cover.jpg','20190816','4.48');
 
 INSERT INTO musicdb.album (ArtistID,Album_Title,Album_Artwork,Date,Price)
 VALUES (2,'Illenium-ASCEND-2019','D:\NUS_STUFF\TIC2601\Songs\Illenium-ASCEND-2019\cover.jpg','20190816','4.48');

@@ -11,6 +11,7 @@ const register = require("./controllers/register");
 const signin = require("./controllers/signin");
 const albumlist = require("./controllers/albumlist");
 const fileupload = require("./controllers/fileupload");
+const userprofile = require("./controllers/userprofile");
 
 // const uploadfiledetails = require("./controllers/uploadfiledetails");
 // const profile = require('./controllers/profile');
@@ -44,6 +45,8 @@ app.post("/register", register.handleRegister(db));
 app.post("/searchalb", albumlist.handleSearch(db));
 
 app.post("/upload", fileupload.handleFileupload(db, fs));
+
+app.post("/userProfile", userprofile.handleProfie(db));
 
 app.listen(3000, () => {
   console.log("Application listening on port 3000!");

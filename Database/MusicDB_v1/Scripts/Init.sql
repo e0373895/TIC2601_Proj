@@ -53,16 +53,16 @@ CREATE TABLE `song` (
   `File_Location` varchar(255) NOT NULL,
   `Song_Artwork` varchar(45) DEFAULT NULL,
   `Price` decimal(10,0) NOT NULL,
-  #`AlbumID` int(11) DEFAULT NULL,
-  #`ArtistID` varchar(255) DEFAULT NULL,
-  KEY `AlbumID_idx` (`AlbumID`),
-  KEY `Artist_idx` (`ArtistID`),
+  `AlbumID` int(11) DEFAULT NULL,
+  `ArtistID` int(11) NOT NULL,
+  #KEY `AlbumID_idx` (`AlbumID`),
+  #KEY `Artist_idx` (`ArtistID`),
   `Date` date DEFAULT NULL,
   PRIMARY KEY (`SongID`,`Price`),
   UNIQUE KEY `SongID_UNIQUE` (`SongID`),
   UNIQUE KEY `File_Location_UNIQUE` (`File_Location`),
-  CONSTRAINT `AlbumID` FOREIGN KEY (`AlbumID`) REFERENCES `album` (`AlbumID`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `ArtistID` FOREIGN KEY (`ArtistID`) REFERENCES `artist` (`ArtistID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  KEY `ArtistID_idx` (`ArtistID`) /*!80000 INVISIBLE */,
+  CONSTRAINT `Artist_ID` FOREIGN KEY (`ArtistID`) REFERENCES `artist` (`ArtistID`) ON DELETE CASCADE ON UPDATE CASCADE,
   KEY `Price` (`Price`)
 ) ENGINE=InnoDB;
 
