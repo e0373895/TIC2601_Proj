@@ -8,8 +8,9 @@ const handleRegister = db => (req, res) => {
     },
     function(error, results, fields) {
       if (error) {
-        throw error;
-        res.status(400).json("Unable to register due to server issue");
+        res
+          .status(400)
+          .json("Unable to register due to server issue or used username");
       }
       // const isValid = bcrypt.compareSync(password, results[0].Password);
       res.send("Registered Successfully");

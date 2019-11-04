@@ -17,6 +17,13 @@ class Signin extends React.Component {
     this.setState({ signInPassword: event.target.value });
   };
 
+  handleErrors(response) {
+    if (!response.ok) {
+      throw Error(response.statusText);
+    }
+    return response;
+  }
+
   onSubmitSignIn = () => {
     fetch("http://localhost:3000/signin", {
       method: "post",
@@ -26,13 +33,14 @@ class Signin extends React.Component {
         password: this.state.signInPassword
       })
     })
-      .then(response => response.json())
+      .then(this.handleErrors)
       .then(user => {
         if (user) {
           this.props.loadUser(user);
           this.props.onRouteChange("home");
         }
-      });
+      })
+      .catch(error => console.log(error.response));
   };
 
   render() {

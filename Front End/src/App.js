@@ -5,7 +5,7 @@ import Signin from "./components/Signin/Signin";
 import Register from "./components/Register/Register";
 import AlbumList from "./components/AlbumList/AlbumList";
 import Fileupload from "./components/fileupload/fileupload";
-
+import Userprofile from "./components/userprofile/userprofile";
 class App extends Component {
   constructor() {
     super();
@@ -37,6 +37,8 @@ class App extends Component {
       this.setState({ isSignedIn: true });
     } else if (route === "fileupload") {
       this.setState({ isSignedIn: true });
+    } else if (route === "userprofile") {
+      this.setState({ isSignedIn: true });
     }
     this.setState({ route: route });
   };
@@ -56,6 +58,8 @@ class App extends Component {
           <Signin loadUser={this.loadUser} onRouteChange={this.onRouteChange} />
         ) : route === "fileupload" ? (
           <Fileupload onRouteChange={this.onRouteChange} />
+        ) : route === "userprofile" ? (
+          <Userprofile onRouteChange={this.onRouteChange} />
         ) : (
           <Register
             loadUser={this.loadUser}
