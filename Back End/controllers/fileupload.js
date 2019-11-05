@@ -10,7 +10,7 @@ const handleFileupload = (db, fs) => (req, res, next) => {
   // console.log(AlbumName);
 
   if (!up_file) {
-    res.status(400).json("NO file");
+    res.status(400).json("No file");
   }
 
   const filepath = "./Albums/" + AlbumName + "/";

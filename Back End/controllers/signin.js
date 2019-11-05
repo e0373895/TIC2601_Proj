@@ -19,7 +19,7 @@ const handleSignin = db => (req, res) => {
       if (isEmpty(results)) {
         res.status(400).json("User does not exist");
       } else {
-        console.log("HERE");
+        // console.log("HERE");
         if (results[0].Password === password) {
           res.json(results[0]);
         } else {
