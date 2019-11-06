@@ -1,10 +1,11 @@
 const handleSearch = db => (req, res) => {
   const { keyword } = req.body;
   const val = "%" + keyword + "%";
+  console.log(val);
   db.query(
     {
       sql:
-        "SELECT  a.Album_Artwork, a.Album_Title, a.Description, a.Date, a.Price, b.Song_Title, b.File_Location, b.Price, b.Date, c.Name FROM album a, song b , artist c WHERE a.Album_Title LIKE ? AND (b.ArtistID = c.ArtistID AND b.AlbumID = a.AlbumID);",
+        "SELECT  a.Album_Artwork, a.Album_Title, a.Description, a.Date, a.Price, b.Song_Title, b.File_Location, b.Price, b.Date, c.Name FROM album a INNER JOIN song b on (b.albumID = a.albumID AND b.Song_Title LIKE ?) INNER JOIN artist c ON c.artistID = b.artistID;",
       values: [val]
     },
     function(error, results, fields) {
@@ -17,6 +18,8 @@ const handleSearch = db => (req, res) => {
         res.status(400).json("Such Keyword does not exists");
       } else {
         // const isValid = bcrypt.compareSync(password, dboutput[0].Password);
+        console.log("this");
+        console.log(results);
         res.send(JSON.stringify(results));
       }
     }

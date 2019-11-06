@@ -3,23 +3,20 @@ import React from "react";
 class AlbumCard extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      key: this.props.key,
-      title: this.props.title,
-      songtitle: this.props.songtitle,
-      artist: this.props.artist,
-      imglink: this.props.imglink,
-      downloadlink: this.props.downloadlink
-    };
+    this.state = {};
   }
 
   onAlbumClick = () => {
-    this.props.loadAlbumDetails(this.state.title);
+    var albdata = {
+      AlbumName: this.props.Album_Title,
+      AlbumArtwork: this.props.imglink
+    };
+    this.props.loadAlbumDetails(albdata);
     this.props.onRouteChange("album");
   };
 
   render() {
-    const imgsrc = "http://localhost:3000/albumimages/" + this.state.imglink;
+    const imgsrc = "http://localhost:3000/albumimages/" + this.props.imglink;
     return (
       <div className="grow" style={{ float: "left" }}>
         <a className="db center mw5 black link dim">
@@ -31,9 +28,9 @@ class AlbumCard extends React.Component {
           />
           <dl className="mt2 f6 lh-copy">
             <dt className="clip">SongTitle</dt>
-            <dd className="ml0 fw9">{this.state.songtitle}</dd>
+            <dd className="ml0 fw9">{this.props.songtitle}</dd>
             <dt className="clip">Title</dt>
-            <dd className="ml0 gray">{this.state.title}</dd>
+            <dd className="ml0 gray">{this.props.Album_Title}</dd>
           </dl>
         </a>
         <p className="f6 blue">Download</p>
