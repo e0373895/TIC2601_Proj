@@ -19,8 +19,8 @@ const albumdetails = require("./controllers/albumdetails");
 const db = mysql.createConnection({
   host: "localhost",
   user: "root",
-  password: "password",
-  database: "musicdb"
+  password: "a0193936N",  
+  database: "musicdb"    
 });
 
 db.connect();
